@@ -51,6 +51,11 @@ public class WorkerFullTime extends Worker {
         this.totalMoney = totalMoney;
     }
 
+    //Tổng tiền FullTime
+    public int getSalary() {
+        return totalMoney + (bonusMoney - forfeit);
+    }
+
     //Danh sách phương thức
     public void addWorkerFullTime() {
         super.addWorker();
@@ -62,10 +67,6 @@ public class WorkerFullTime extends Worker {
         forfeit = scanner1.nextInt();
         System.out.println("Nhập lương cứng: ");
         totalMoney = scanner.nextInt();
-    }
-
-    public double salaryFullTime() {
-        return totalMoney + (bonusMoney - forfeit);
     }
 
     @Override

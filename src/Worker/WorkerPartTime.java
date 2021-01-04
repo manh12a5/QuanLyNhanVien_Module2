@@ -29,6 +29,11 @@ public class WorkerPartTime extends Worker {
         this.timeWork = timeWork;
     }
 
+    //Tông tiền PartTime
+    public int getSalary() {
+        return timeWork * 100000;
+    }
+
     //Danh sách phương thức
     public void addWorkerPartTime() {
         super.addWorker();
@@ -37,10 +42,6 @@ public class WorkerPartTime extends Worker {
             System.out.println("Nhập số giờ làm việc: ");
             timeWork = scanner.nextInt();
         } while (timeWork < 0);
-    }
-
-    public double salaryPartTime() {
-        return timeWork * 100000;
     }
 
     @Override

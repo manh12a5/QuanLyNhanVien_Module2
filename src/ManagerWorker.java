@@ -1,3 +1,4 @@
+import Worker.Worker;
 import Worker.WorkerFullTime;
 import Worker.WorkerPartTime;
 
@@ -9,62 +10,69 @@ import java.util.List;
 public class ManagerWorker {
 
     //Danh sách thuộc tính
-    List<WorkerFullTime> arrWorkerFullTime = new ArrayList<>();
-    List<WorkerPartTime> arrWorkerPartTime = new ArrayList<>();
+    List<Worker> arrWorkers = new ArrayList<>();
 
     //Danh sách phương thức
+
+    //Thêm nhân viên
     public void addNewWorkerFullTime() {
         WorkerFullTime workerFullTime = new WorkerFullTime();
         workerFullTime.addWorkerFullTime();
-        arrWorkerFullTime.add(workerFullTime);
+        arrWorkers.add(workerFullTime);
     }
 
     public void addNewWorkerPartTime() {
         WorkerPartTime workerPartTime = new WorkerPartTime();
         workerPartTime.addWorkerPartTime();
-        arrWorkerPartTime.add(workerPartTime);
+        arrWorkers.add(workerPartTime);
     }
 
-    public void averageSalaryFullTime() {
-        byte count = 0;
-        for (int i = 0; i < arrWorkerFullTime.size(); i++) {
-            if (arrWorkerFullTime.get(i).salaryFullTime() < 8000000) {
-                System.out.println(arrWorkerFullTime.get(i));
-                System.out.println();
-                count++;
+    //Tính lương thấp hơn mức trung bình
+    public int avgSalary() {
+        int avg = 0;
+        for (int i = 0; i < arrWorkers.size(); i++) {
+            avg += arrWorkers.get(i).getSalary();
+        }
+        return avg;
+    }
+
+    public void showSalaryLowerThanAVG() {
+        for (int i = 0; i < arrWorkers.size(); i++) {
+            if (arrWorkers.get(i) instanceof WorkerFullTime) {
+                if (arrWorkers.get(i).getSalary() < avgSalary()) {
+                    System.out.println(arrWorkers.get(i));
+                }
             }
         }
-        if (count == 0) {
-            System.out.println("Không có nhân viên lương thấp hơn mức trung bình");
-            System.out.println();
-        }
     }
 
+    //Tổng lương phải trả cho nhân viên bán thời gian
     public void totalSalaryPartTime() {
-        double total = 0;
-        for (int i = 0; i < arrWorkerPartTime.size(); i++) {
-            total += arrWorkerPartTime.get(i).salaryPartTime();
+        int total = 0;
+        for (int i = 0; i < arrWorkers.size(); i++) {
+            if (arrWorkers.get(i) instanceof WorkerPartTime) {
+                total += arrWorkers.get(i).getSalary();
+            }
         }
         System.out.println("Tông tiền phải trả cho nhân viên Part Time là: " + total);
-        System.out.println();
     }
 
+    //Săp xếp
     public void sortWorker() {
-        Collections.sort(arrWorkerFullTime, new Comparator<WorkerFullTime>() {
+        Collections.sort(arrWorkers, new Comparator<>() {
             @Override
-            public int compare(WorkerFullTime o1, WorkerFullTime o2) {
-                if (o1.salaryFullTime() < o2.salaryFullTime()) {
-                    return -1;
-                } else if (o1.salaryFullTime() > o2.salaryFullTime()) {
+            public int compare(Worker o1, Worker o2) {
+                if (o1.getSalary() > o2.getSalary()) {
                     return 1;
+                } else if (o1.getSalary() < o2.getSalary()) {
+                    return -1;
                 } else {
                     return 0;
                 }
             }
         });
-        for (int i = 0; i < arrWorkerFullTime.size(); i++) {
-            System.out.println(arrWorkerFullTime.get(i));
-            System.out.println();
+        for (int i = 0; i < arrWorkers.size(); i++) {
+            System.out.println(arrWorkers);
         }
     }
 

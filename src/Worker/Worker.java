@@ -2,7 +2,7 @@ package Worker;
 
 import java.util.Scanner;
 
-public class Worker {
+public abstract class Worker {
 
     //Danh sách thuộc tính
     private int numberWorker;
@@ -63,6 +63,9 @@ public class Worker {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    //Interface tổng tiền
+    public abstract int getSalary();
 
     //Danh sách phương thức
     public void addWorker() {

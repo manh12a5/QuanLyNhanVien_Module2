@@ -16,8 +16,8 @@ public class Main {
                     listChoiceWorker();
                     break;
                 case 2:
-                    //Check Salary < 8 triệu
-                    managerWorker.averageSalaryFullTime();
+                    //Show lương thấp hơn trung bình
+                    managerWorker.showSalaryLowerThanAVG();
                     break;
                 case 3:
                     //Total salary PartTime
