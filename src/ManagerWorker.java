@@ -31,9 +31,11 @@ public class ManagerWorker {
     public int avgSalary() {
         int avg = 0;
         for (int i = 0; i < arrWorkers.size(); i++) {
-            avg += arrWorkers.get(i).getSalary();
+            if (arrWorkers.get(i) instanceof WorkerFullTime) {
+                avg += arrWorkers.get(i).getSalary();
+            }
         }
-        return avg;
+        return avg / arrWorkers.size();
     }
 
     public void showSalaryLowerThanAVG() {
@@ -72,7 +74,7 @@ public class ManagerWorker {
             }
         });
         for (int i = 0; i < arrWorkers.size(); i++) {
-            System.out.println(arrWorkers);
+            System.out.println(arrWorkers.get(i));
         }
     }
 

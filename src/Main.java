@@ -17,6 +17,7 @@ public class Main {
                     break;
                 case 2:
                     //Show lương thấp hơn trung bình
+                    System.out.println("Mức lương trung bình của công ty: " + managerWorker.avgSalary());
                     managerWorker.showSalaryLowerThanAVG();
                     break;
                 case 3:
@@ -34,7 +35,7 @@ public class Main {
 
     private static void listChoice() {
         System.out.println("1. Nhập thông tin nhân viên");
-        System.out.println("2. Liệt kê những nhân viên FullTime lương thấp hơn 8 triệu");
+        System.out.println("2. Liệt kê những nhân viên FullTime lương thấp hơn mức lương trung bình");
         System.out.println("3. Tính tiền lương nhân viên PartTime");
         System.out.println("4. Sắp xếp lương nhân viên FullTime tăng dần");
         System.out.println("0. Exit");

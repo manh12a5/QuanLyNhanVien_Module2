@@ -94,14 +94,14 @@ public abstract class Worker {
         if (age >= 18 && age <= 65) {
             return true;
         } else {
-            System.out.println("Mới bạn nhập lại tuổi trong khoảng 18-65");
+            System.err.println("Độ tuổi phải trong khoảng 18-65");
             return false;
         }
     }
 
     public boolean checkPhone(String phone) {
        if (phone.length() < 10) {
-           System.out.println("Số điện thoại có có 10 số");
+           System.err.println("Số điện thoại có 10 số");
            return false;
        } else {
            return true;
@@ -110,8 +110,8 @@ public abstract class Worker {
 
     public boolean checkEmail(String email) {
         for (int i = 0; i < email.length(); i++) {
-            if(email.charAt(i) != '@' && email.charAt(i) != '.') {
-                System.out.println("Email phải có @ và dấu chấm");
+            if(!email.contains("@")) {
+                System.err.println("Email phải có @");
                 return false;
             }
         }
